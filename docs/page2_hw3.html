@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <style>
+        body {
+            margin: 10px 15px; /* Margins around the body */
+            padding: 10px; 
+            overflow-x: hidden;
+        }
+        
+        /* Optional: Add padding to the content for better spacing */
+        .content {
+            padding: 20px; /* Optional padding for content */
+        }
+    </style>
+    
+    <title>Capstones</title>
+</head>
+
+<body>
+    <div class="content">
+        <h2 id="part-2">Part 2 (HW 3)</h2>
+        <p>Based on the simulation design explained in class, generate 200 data sets where the input features have a strong correlation structure (you may consider a 0.9) and apply ElasticNet, SqrtLasso and SCAD to check which method produces the best approximation of an ideal solution, such as a "betastar" you design with a sparsity pattern of your choice.</p>
+    
+        <h3 id="the-methods">The Methods</h3>
+        <ol>
+        <li>SCAD (Smoothly Clipped Absolute Deviation): As explained in Part 1 of the assignment, Smoothly Clipped Absolute Deviation (SCAD) is a regularization technique that can be used for variable selection in linear models. It applies a penalty that “smoothly” transitions from penalizing small coefficients linearly to imposing no penalty on larger coefficients. This process helps more accurately estimate the important predictors compared to traditional methods like Lasso and ensures that the model captures the effects of significant variables leading to better predictions and interpretations. SCAD encourages sparsity (when many of a model&#39;s coefficients are zero) which simplifies interpretation while maintaining high accuracy of estimations. </li>
+        <li>ElasticNet: ElasticNet is a hybrid regularization technique that combines both L1 (Lasso) and L2 (Ridge) penalties. It is useful in datasets where there are multiple features correlated with each other, as it does a good job finding groups of correlated variables while preventing overfitting. The balance between L1 and L2 regularization is controlled by the l1_ratio, allowing users to fine-tune the model according to their dataset characteristics. </li>
+        <li>SqrtLasso: SqrtLasso is a variation of Lasso regression that replaces the L1 penalty with the square root of the L1 norm. This causes different optimization behavior and can improve the stability of coefficient estimates. Like Lasso, it encourages sparsity, but by applying a square root transformation, it can produce different results, especially with highly correlated features. </li>
+        </ol>
+
+        <h3 id="process">Process</h3>
+        <p>The three classes for SCAD, ElasticNet, and SqrtLasso are created based on Part 1 and the Penalized Regression with PyTorch Notebook from class. The 200 datasets are generated with a strong correlation among the input features (.9). The sparsity pattern is defined through the betastar array, defining which predictors should be influential and which should not. Each model is then fitted using the training data, where the fit method trains the model through stochastic gradient descent. The learned coefficients can then be takes from each model. The results are then compiled into a dataframe, allowing for a clear view of how each method performed in approximating the coefficient defined in betastar. This comparison is then used to determine which regularization technique had the best performance. </p>
+
+ 
+
+        <h3 id="findings">Findings</h3>
+
+        <p>The graph below illustrates the absolute difference from the defined coefficient for each model. Based on this graph, SCAD is generally the closest to the true coefficients when they are non-zero coefficients. Interestingly, SCAD failed to have zero coefficients where they were defined (at indices 1, 2, 7, 10, 11, 12, 13, and 14). Square Root Lasso did a very good job of finding these zero-coefficients and Elastic-Net did a notably better job that SCAD. </p>
+        <div style="text-align: center;">
+            <img src="absolute_differences.png" alt="Absolute Differences" style="width: 800px; height: auto;">
+        </div>
+  
+            
+        <h4 id="Code">Code, Classes, and Data for Part 2</h4>
+        <p><a href="https://github.com/MaryEDeignan/Capstone/blob/main/HW3/Homework_3.ipynb">Jupyter Notebook with Implementations</a></p>
+        <p><a href="https://github.com/MaryEDeignan/Capstone/blob/main/HW3/SCAD_Class.py">SCAD Class</a></p>
+        <p><a href="https://github.com/MaryEDeignan/Capstone/blob/main/HW3/Elastic_Net_Class.py">Elastic Net Class</a></p>
+        <p><a href="https://github.com/MaryEDeignan/Capstone/blob/main/HW3/SQRT_Lasso_Class.py">Square Root Lasso Class</a></p>
+
+
+
+
+
+
+    </div>
+</body>
+
+</html>

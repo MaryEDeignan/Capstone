@@ -66,7 +66,7 @@ class SCADLinearRegression(nn.Module):
       optimize.step()
 
       if (epoch+1) % 100 == 0:
-        print(f'epoch: {epoch+1}/{num_epochs}, loss_with_scad: {loss_with_scad.item()}')
+        print(f'epoch: {epoch+1}/{num_epochs}, Loss: {loss_with_scad.item()}')
     return
                 
 

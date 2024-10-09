@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <style>
         body {
-            margin: 10px 20px; /* Margins around the body */
-            padding: 0; /* Reset any default padding */
+            margin: 10px 15px; /* Margins around the body */
+            padding: 10px; 
+            overflow-x: hidden;
         }
         
         /* Optional: Add padding to the content for better spacing */
@@ -24,18 +25,47 @@
 <body>
     <div class="content">
         <h1 id="capstone">Capstone Projects</h1>
-        <h2 id="hw-1">Homework 1</h2>
+        <h2 id="homework-1">Homework 1</h2>
         <p>Based on the examples provided, make your own class for implementing locally weighted regression to work with multiple features, and also train and test data. Show an application to a real data set with your implementation, and present the 10-fold cross-validated mean square error.</p>
         <p>Find my HW1 code <a href="https://github.com/MaryEDeignan/Capstone/blob/main/HW1/HW1.ipynb">here</a> and the data I used  <a href="https://github.com/MaryEDeignan/Capstone/blob/main/HW1/cars.csv">here!</a> <br></p>
 
         <h2 id="homework-2">Homework 2</h2>
         <h4 id="part-1">Part 1</h4>
         <p>Create your class that implements the Gradient Boosting concept, based on the locally weighted regression method (Lowess class), and that allows a user-prescribed number of boosting steps. The class you develop should have all the mainstream useful options, including “fit,” “is_fitted”, and “predict,” methods. Show applications with real data for regression, 10-fold cross-validations and compare the effect of different scalers, such as the “StandardScaler”, “MinMaxScaler”, and the “QuantileScaler”. In the case of the “Concrete” data set, determine a choice of hyperparameters that yield lower MSEs for your method when compared to the eXtream Gradient Boosting library.</p>
-
         <h4 id="part-2">Part 2</h4>
         <p>Implement your own version of Locally Weighted Logistic Regression and compare its performance on the Iris data set with the version presented in this article: <a href="https://calvintchi.github.io/classical_machine_learning/2020/08/16/lwlr.html">https://calvintchi.github.io/classical_machine_learning/2020/08/16/lwlr.html</a>.</p>
         <p><em>Present your results with detailed explanations and visualizations of the results in the format of a data science paper on Github.</em></p>
         <p>The link to my website with this Homework is <a href="https://maryedeignan.github.io/Homework2/">here!</a></p>
+
+        <h2 id="homework-3">Homework 3</h2>
+        <h4 id="part-1">Part 1</h4>
+        <p>Create your own PyTorch class that implements the method of SCAD regularization and variable selection (smoothly clipped absolute deviations) for linear models. Your development should be based on the following references: 
+            <ul>
+                <li>https://andrewcharlesjones.github.io/journal/scad.html</li>
+                <li>https://www.jstor.org/stable/27640214?seq=1 </li>
+            </ul>
+        <p>Test your method on a real data set and determine a variable selection based on features' importance, according to SCAD.</p>
+        <p>You can find my page explaining this component of the project <a href="page1_hw3.html">here</a>.</p>
+        <h4 id="part-2">Part 2</h4>
+        <p>Based on the simulation design explained in class, generate 200 data sets where the input features have a strong correlation structure (you may consider a 0.9) and apply ElasticNet, SqrtLasso and SCAD to check which method produces the best approximation of an ideal solution, such as a "betastar" you design with a sparsity pattern of your choice.</p>
+        <p>You can find my page explaining this component of the project <a href="page2_hw3.html">here</a>.</p>
+        <h4 id="part-3">Part 3</h4>
+        <p> Use the methods you implemented above to determine a variable selection for the Concrete data set with quadratic interaction terms (polynomial features of degree 2). To solve this, you should consider choosing the best weight for the penalty function. What is the ideal model size (number of variables with non-zero weights), and what is the cross-validated mean square error?</p>
+        <p>You can find my page explaining this component of the project here.</p>
+            
+        <h4 id="Code">Code, Classes, and Data for Homework 3</h4>
+        <p><a href="https://github.com/MaryEDeignan/Capstone/blob/main/HW3/Homework_3.ipynb">Jupyter Notebook with Implementations for all three parts</a></p>
+        <p><a href="https://github.com/MaryEDeignan/Capstone/blob/main/HW3/SCAD_Class.py">SCAD Class</a></p>
+        <p><a href="https://github.com/MaryEDeignan/Capstone/blob/main/HW3/Elastic_Net_Class.py">Elastic Net Class</a></p>
+        <p><a href="https://github.com/MaryEDeignan/Capstone/blob/main/HW3/SQRT_Lasso_Class.py">Square Root Lasso Class</a></p>
+        <p><a href="https://github.com/dvasiliu/AAML/blob/main/Data%20Sets/housing.csv">Housing Data Set used in Part 1</a></p>
+        <p><a href="https://github.com/dvasiliu/AAML/blob/main/Data%20Sets/concrete.csv">Concrete Data Set used in Part 3</a></p>
+
+
+
+
+
+
     </div>
 </body>
 
