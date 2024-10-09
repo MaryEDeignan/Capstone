@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <style>
+        body {
+            margin: 10px 15px; /* Margins around the body */
+            padding: 10px; 
+            overflow-x: hidden;
+        }
+        
+        /* Optional: Add padding to the content for better spacing */
+        .content {
+            padding: 20px; /* Optional padding for content */
+        }
+    </style>
+    
+    <title>Capstones</title>
+</head>
+
+<body>
+    <div class="content">
+        <h2 id="part-3">Part 3 (HW 3)</h2>
+        <p> Use the methods you implemented above to determine a variable selection for the Concrete data set with quadratic interaction terms (polynomial features of degree 2). To solve this, you should consider choosing the best weight for the penalty function. What is the ideal model size (number of variables with non-zero weights), and what is the cross-validated mean square error?</p>
+            
+        <h3 id="the-methods">The Methods</h3>
+        <p>The methods used were the same as from Part 1 and 2, so for an elaborate explanation of these models check those pages.</p>
+        <p>For this component, variable selection was performed on the Concrete dataset using polynomial features of degree 2 (meaning quadratic and interaction terms are included). The goal was to choose the best weight for the penalty function across the different regularization models: Elastic Net, Square Root Lasso, and SCAD. The models were then evaluated based on the average number of non-zero coefficients and the cross-validated mean squared error (MSE).</p>
+
+        <h3 id="process">Process</h3>
+        <p>Feature variables are separated from the target variable, which is the compressive strength of concrete. The PolynomialFeatures function from sklearn.preprocessing is used to create polynomial features of degree 2, including interaction terms, to help capture the relationships between different features. After generating the polynomial features, the data is scaled using MinMaxScaler and is split into training and testing sets using train_test_split. Next, KFold cross-validation is applied to evaluate the model's performance. Within the cross_validate_model function, the dataset is split into training and testing sets. For each fold, the appropriate model is initialized based on the specified model class (Elastic Net, Square Root Lasso, or SCAD) and fit to the training data. After training, predictions are made on the testing set, and the mean squared error is calculated to evaluate model performance. The function also counts the number of non-zero weights to determine the complexity of the model. Finally, a basic grid search is performed to find the best penalty values. The function is called for each regularization method with set penalty values, and the results, including the best penalty to use, average MSE, and the count of non-zero weights, are printed. </p>
+
+        <h3 id="Findings">Findings</h3>
+        <p>Based on a very simple grid search, the best penalty value for ElasticNet and Square Root Lasso was found to be .001. For SCAD it was found to be 0.1. For all three "best" models, there were 37 non-zero weights. This means that there were 37 features that are contributing to the model. The model with the lowest MSE was ElasticNet with an MSE of 113.719 and 37 non-zero weights.</p>
+
+        <h4 id="Code">Code, Classes, and Data for Part 3</h4>
+        <p><a href="https://github.com/MaryEDeignan/Capstone/blob/main/HW3/Homework_3.ipynb">Jupyter Notebook with Implementation</a></p>
+        <p><a href="https://github.com/MaryEDeignan/Capstone/blob/main/HW3/SCAD_Class.py">SCAD Class</a></p>
+        <p><a href="https://github.com/MaryEDeignan/Capstone/blob/main/HW3/Elastic_Net_Class.py">Elastic Net Class</a></p>
+        <p><a href="https://github.com/MaryEDeignan/Capstone/blob/main/HW3/SQRT_Lasso_Class.py">Square Root Lasso Class</a></p>
+        <p><a href="https://github.com/dvasiliu/AAML/blob/main/Data%20Sets/concrete.csv">Concrete Data Set</a></p>
+
+
+
+
+
+
+    </div>
+</body>
+
+</html>
